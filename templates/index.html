@@ -15,6 +15,7 @@
     <p><strong>Author:</strong> {{ post.author }}</p>
     <p>{{ post.content }}</p>
 
+    <a href="/update/{{ post.id }}">Edit</a>
     <a href="/delete/{{ post.id }}">Delete</a>
 {% endfor %}
 
