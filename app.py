@@ -84,6 +84,19 @@ def update(post_id):
 
     return render_template('update.html', post=post_to_update)
 
+@app.route('/like/<int:post_id>')
+def like(post_id):
+    blog_posts = load_blog_posts()
+
+    for post in blog_posts:
+        if post["id"] == post_id:
+            post["likes"] = post.get("likes", 0) + 1
+            break
+
+    save_blog_posts(blog_posts)
+
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
